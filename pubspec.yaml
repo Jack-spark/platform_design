@@ -1,0 +1,54 @@
+name: platform_design
+description: A project showcasing a Flutter app following different platform IA conventions.
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.0.0
+
+dependencies:
+  english_words: ^4.0.0
+  flutter_lorem: ^2.0.0
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  analysis_defaults:
+    path: ./analysis_defaults
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+      - assets/ic_bottombar_meditate.png
+      - assets/ic_goals_teal.png
+      - assets/ic_meditation_mode_mind_no_shadow.png
+      - assets/ic_meditation_mode_body_no_shadow.png
+      - assets/ic_meditation_mode_heart_no_shadow.png
+      - assets/ic_meditation_mode_breath_no_shadow.png
+      - assets/ic_meditation_mode_timed_no_shadow.png
+      - assets/background_presleep_star_sky.png
+      - assets/bg_post_session_stars.png
+      - assets/img_guided_courses.png
+      - assets/onboarding_bg.png
+      - assets/palmleaves_bg.png
+      - assets/ic_challenges.png
+      - assets/ic_goals_teal.png
+      - assets/ic_total_minutes.png
+      - assets/ic_muse_points.png
+      - assets/ic_birds.png
+      - assets/ic_recoveries_large.png
+      - assets/ic_meditation_mode_all_no_shadow.png
+      - assets/ic_meditation_mode_mind_no_shadow.png
+      - assets/ic_meditation_mode_timed_active.png
+      - assets/ic_avatar_placeholder.png
+      - assets/ic_challenges.png
+      - assets/a1.png
+      - assets/a2.png
+      - assets/a3.png
+      - assets/a4.png
+      - assets/a5.png
+      - assets/a6.png
+      - assets/a7.png
