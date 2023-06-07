@@ -6,6 +6,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_lorem/flutter_lorem.dart';
+import 'anniu.dart';
+import 'programs_tab.dart';
+
 
 import 'utils.dart';
 import 'widgets.dart';
@@ -34,6 +37,7 @@ class ButtonDetailPage extends StatelessWidget {
   }
 }
 
+
 class MedidateTab extends StatefulWidget {
   static const title = 'Medidate';
   static final androidIcon = Icon(Icons.music_note);
@@ -48,7 +52,7 @@ class MedidateTab extends StatefulWidget {
 }
 
 class _MedidateTabState extends State<MedidateTab> {
-  final List<String> buttonLabels = ['Whats new', 'Meditaion Month', 'May Staff Picks', 'May Featured Teacher'];
+  final List<String> buttonLabels = ['Whats new                 4 sessions', 'June Staff Picks         6 sessions'];
   final List<String> buttonLabels2 = ['Muse 2 Stater Guide', 'Muse S Stater Guide', 'Foundations of Muse Mind Meditation',
     'Discover Heart,Breath&Body','14 Days of Sleep','Explore Guided Meditations','Muse Essentials'];
   final List<String> buttonLabels3 = ['Mind', 'Body', 'Heart', 'Breath','Timed',];
@@ -63,8 +67,6 @@ class _MedidateTabState extends State<MedidateTab> {
   List<String> buttonImagePaths2 = [
     'assets/a7.png',
     'assets/a5.png',
-    'assets/a1.png',
-    'assets/a2.png',
     // 添加更多按钮的图标数据
   ];
   List<String> buttonImagePaths3 = [
@@ -76,6 +78,28 @@ class _MedidateTabState extends State<MedidateTab> {
     'assets/a5.png',
     'assets/a6.png',
     // 添加更多按钮的图标数据
+  ];
+  List<Widget> ButtonDetailPagea = [
+  ButtonDetailPage1(),
+  ButtonDetailPage2(),
+  ];
+
+  List<Widget> ButtonDetailPageb = [
+    ButtonDetailPage3(),
+    ButtonDetailPage4(),
+    ButtonDetailPage5(),
+    ButtonDetailPage6(),
+    ButtonDetailPage7(),
+    ButtonDetailPage8(),
+    ButtonDetailPage9(),
+  ];
+
+  List<Widget> ButtonDetailPagec = [
+    ButtonDetailPage4(),
+    ButtonDetailPage4(),
+    ButtonDetailPage4(),
+    ButtonDetailPage4(),
+    ButtonDetailPage10(),
   ];
 
   @override
@@ -176,6 +200,8 @@ class _MedidateTabState extends State<MedidateTab> {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
+
+
             Container(
               height: 120,
               margin: EdgeInsets.symmetric(vertical: 16),
@@ -187,91 +213,108 @@ class _MedidateTabState extends State<MedidateTab> {
                   final buttonImagePath = buttonImagePaths2[index];
 
                   return InkWell(
-                      onTap: () {
-                    // 导航到新的页面
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ButtonDetailPage(buttonText: buttonText),
-                      ),
-                    );
-                  },
-                  child: Container(
-                  width: MediaQuery.of(context).size.width / 2,
-                  margin: EdgeInsets.only(left: 8),
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: Image.asset(buttonImagePath,).image,
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Align(
-                    alignment: Alignment.bottomLeft,
+                    onTap: () {
+                      // 导航到新的页面
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ButtonDetailPagea[index],
+                        ),
+                      );
+                    },
                     child: Container(
-                      margin: EdgeInsets.only(left: 8, bottom: 8),
-                      child: Row(
+                      width: MediaQuery.of(context).size.width / 2,
+                      margin: EdgeInsets.only(left: 8),
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: Image.asset(buttonImagePath,).image,
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Container(
+                          margin: EdgeInsets.only(left: 8, bottom: 8),
+                          child: Row(
 
-                        children: [
-                          Align(
-                            alignment: Alignment.centerLeft, // 仅对图标进行水平居中对齐
-                            child: Padding(
-                              padding: EdgeInsets.only(top: 40),
-                              child:Icon(
-                                Icons.density_medium,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 4),
-                          Expanded(
-                            child: Padding(
-                              padding: EdgeInsets.only(top: 40),
-                              child: Wrap(
-                                children: [
-                                  Text(
-                                    buttonLabels[index],
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                    ),
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft, // 仅对图标进行水平居中对齐
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: 40),
+                                  child:Icon(
+                                    Icons.density_medium,
+                                    color: Colors.white,
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
+                              SizedBox(width: 4),
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: 40),
+                                  child: Wrap(
+                                    children: [
+                                      Text(
+                                        buttonLabels[index],
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
+
+
                       ),
                     ),
-
-
-                  ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 16, top: 16),
-            child: Row(
-              children: [
-                Text(
-                  'Programs',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                Spacer(),
-                Row(
-                  children: [
-                    Text(
-                      'See All',
-                      style: TextStyle(fontSize: 16),
+
+            Container(
+              margin: EdgeInsets.only(left: 16, top: 16),
+              child: Row(
+                children: [
+                  Text(
+                    'Programs',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  Spacer(),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>  ProgramsTab(),
+                        ),
+                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => ButtonDetailPage(buttonText: 'My Library'),
+                      //   ),
+                      // );
+                    },
+                    child: Row(
+                      children: [
+                        Text(
+                          'See All',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        Icon(Icons.arrow_forward),
+                      ],
                     ),
-                    Icon(Icons.arrow_forward),
-                  ],
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
-          ),
 
             Container(
               height: 120,
@@ -289,7 +332,7 @@ class _MedidateTabState extends State<MedidateTab> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ButtonDetailPage(buttonText: buttonText),
+                          builder: (context) => ButtonDetailPageb[index],
                         ),
                       );
                     },
@@ -373,7 +416,7 @@ class _MedidateTabState extends State<MedidateTab> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ButtonDetailPage(buttonText: buttonText),
+                          builder: (context) => ButtonDetailPagec[index],
                         ),
                       );
                     },

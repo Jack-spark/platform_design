@@ -10,9 +10,10 @@ dependencies:
   flutter_lorem: ^2.0.0
   flutter:
     sdk: flutter
-
+  intl: ^0.17.0
   cupertino_icons: ^1.0.2
-
+  audioplayers: ^4.1.0
+  flutter_cache: ^0.1.0
 dev_dependencies:
   analysis_defaults:
     path: ./analysis_defaults
@@ -52,3 +53,9 @@ flutter:
       - assets/a5.png
       - assets/a6.png
       - assets/a7.png
+      - assets/background_presleep_star_sky.png
+      - assets/jiantou.png
+      - assets/complete_checkmark.png
+      - assets/ic_guided_meditation_record_play.png
+      - assets/zanting.png
+      - assets/campfire_music_L2.mp3
