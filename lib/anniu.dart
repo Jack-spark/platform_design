@@ -8,315 +8,9 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/cupertino.dart';
-
+import 'programs_tab.dart';
 import 'utils.dart';
 import 'widgets.dart';
-
-class Rainforest extends StatefulWidget{
-  const Rainforest({super.key});
-
-  @override
-  State<Rainforest> createState() => _Rainforest();
-}
-
-class _Rainforest extends State<Rainforest> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/a1.png'),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: SafeArea(
-          bottom: true,
-          child: Column(
-            children: [
-              Stack(
-                children: [
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Text(
-                      'Journey',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 18
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: IconButton(
-                      icon: Icon(Icons.arrow_back_ios),
-                      color: Colors.white,
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: InkWell(
-                  onTap: () {
-                    // 处理按钮点击事件
-                    print('Button click!');
-                    // 添加您想要执行的操作
-                  },
-                  child: Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.green,
-                    ),
-                    child: Center(
-                      child: Icon(
-                        Icons.add,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 15),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 90.0),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'How long would you like ',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 18
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 90.0),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'your ession to last? ',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 18
-                    ),
-                  ),
-
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 20),
-              ),
-              ColorChangingCircles(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-
-}
-
-class ColorChangingCircles extends StatefulWidget {
-  @override
-  _ColorChangingCirclesState createState() => _ColorChangingCirclesState();
-}
-
-class _ColorChangingCirclesState extends State<ColorChangingCircles> {
-  List<bool> _selectedStates = List.filled(6, false);
-  Duration selectduration = Duration(hours: 0, minutes: 0);
-
-  void _onCircleTapped(int index) {
-    setState(() {
-      // 点击圆框时更新选中状态
-      if (_selectedStates[index] == true)
-        _selectedStates[index] = false;
-      else {
-        for (int i = 0; i < _selectedStates.length; i++) {
-          _selectedStates[i] = false;
-        }
-        _selectedStates[index] = !_selectedStates[index];
-        selectduration = Duration(hours: 0, minutes: (index + 1) * 5);
-      }
-
-
-    });
-  }
-
-  @override
-
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-      Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(
-        3,
-            (index) => SizedBox(
-          child: GestureDetector(
-            onTap: () => _onCircleTapped(index),
-            child: Container(
-              width: 80,
-              height: 50,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: _selectedStates[index] ? Colors.deepPurpleAccent : Colors.white,
-              ),
-              child: Center(
-                child: Column(
-                  children: [
-                    Text(
-                      '${(index + 1) * 5}',
-                      style: TextStyle(fontSize: 20.0, color: _selectedStates[index] ? Colors.white : Colors.black),
-                    ),
-                    Text(
-                      'mins',
-                      style: TextStyle(fontSize: 12.0, color: _selectedStates[index] ? Colors.white : Colors.black),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    ),
-        Padding(
-          padding: EdgeInsets.only(bottom: 20),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(
-            3,
-                (index) => GestureDetector(
-              onTap: () => _onCircleTapped(index + 3),
-              child: Container(
-                width: 80,
-                height: 50,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: _selectedStates[index + 3] ? Colors.deepPurpleAccent : Colors.white,
-                ),
-                child: Center(
-                  child: Column(
-                    children: [
-                      Text(
-                        '${(index + 4) * 5}',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          color: _selectedStates[index + 3] ? Colors.white : Colors.black,
-                        ),
-                      ),
-                      Text(
-                        'mins',
-                        style: TextStyle(
-                          fontSize: 12.0,
-                          color: _selectedStates[index + 3] ? Colors.white : Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.1),
-        ),
-        Container(
-          height: MediaQuery.of(context).size.height * 0.4,
-          width: double.infinity,
-          color: Colors.white,
-          child: Column(
-            children: [
-              Row(
-                // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.2),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Text(
-                      'Hours',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Text(
-                      'Minutes',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                ],
-                    ),
-                CupertinoTimerPicker(
-                  mode: CupertinoTimerPickerMode.hm,
-                  initialTimerDuration: selectduration,
-                  onTimerDurationChanged: (Duration newDuration) {
-                    setState(() {
-                      selectduration = newDuration;
-                    });
-                  },
-                ),
-               Align(
-                  alignment: Alignment.center,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ButtonDetailPage11(duration1: selectduration),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      height: MediaQuery.of(context).size.height * 0.05,
-                      child: Center(
-                        child:Text(
-                          'Next',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 25
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-            ],
-          ),
-        ),
-      ],
-
-    );
-  }
-}
 
 class ButtonDetailPage1 extends StatefulWidget {
   @override
@@ -1709,26 +1403,19 @@ class ButtonDetailPage10 extends StatelessWidget {
   void _handleIconTap(BuildContext context) {
     // 处理图标点击事件的逻辑
   }
-  final List<String> buttonLabels2 = ['Muse 2 Stater Guide', 'Muse S Stater Guide', 'Foundations of Muse Mind Meditation',
-    'Discover Heart,Breath&Body','14 Days of Sleep','Explore Guided Meditations','Muse Essentials'];
+  final List<String> buttonLabels2 = ['Stream', 'Beach', 'Forest'];
   List<String> buttonImagePaths3 = [
-    'assets/a1.png',
-    'assets/a4.png',
-    'assets/a3.png',
-    'assets/a2.png',
-    'assets/a7.png',
-    'assets/a5.png',
-    'assets/a6.png',
+    'assets/b3.png',
+    'assets/b2.png',
+    'assets/b1.png',
+
     // 添加更多按钮的图标数据
   ];
   List<Widget> ButtonDetailPageb = [
     Rainforest(),
-    ButtonDetailPage12(),
-    ButtonDetailPage5(),
-    ButtonDetailPage6(),
-    ButtonDetailPage7(),
-    ButtonDetailPage8(),
-    ButtonDetailPage9(),
+    Rainforest2(),
+    Rainforest3(),
+
   ];
   @override
   Widget build(BuildContext context) {
@@ -1871,7 +1558,7 @@ class ButtonDetailPage10 extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Align(
-                                    alignment: Alignment.centerLeft, // 仅对图标进行水平居中对齐
+                                    alignment: Alignment.bottomLeft, // 仅对图标进行水平居中对齐
                                     child: Padding(
                                       padding: EdgeInsets.only(top: 60),
                                       child:Icon(
@@ -2002,7 +1689,8 @@ class _ButtonDetailPage11State extends State<ButtonDetailPage11> {
   Duration totalDuration = Duration.zero;
   Duration currentPosition = Duration.zero;
   Duration yiDuration = Duration(seconds:1);
-  double get remainingProgress => (totalDuration - currentPosition).inMilliseconds / (totalDuration + yiDuration).inMilliseconds;
+  double get remainingProgress => (totalDuration - currentPosition - yiDuration).inMilliseconds / (totalDuration + yiDuration).inMilliseconds;
+  bool showRemainingTime = false;
 
   void _togglePause() {
     setState(() {
@@ -2013,9 +1701,9 @@ class _ButtonDetailPage11State extends State<ButtonDetailPage11> {
     if (isPlaying) {
       player.pause();
     } else {
-      player.setSource(AssetSource('campfire_music_L2.mp3')).then((value) {
+      player.setSource(AssetSource('gentle_river_L0.mp3')).then((value) {
         player.play(
-          AssetSource('campfire_music_L2.mp3'),
+          AssetSource('gentle_river_L0.mp3'),
         );
       });
     }
@@ -2026,16 +1714,13 @@ class _ButtonDetailPage11State extends State<ButtonDetailPage11> {
       player.setReleaseMode(ReleaseMode.release);
     }
 
-    Duration playDuration = Duration(minutes: 1); // 播放时长为10分钟
 
-    Future.delayed(playDuration, () {
-      player.stop();
-    });
   }
 
   @override
   void initState() {
     super.initState();
+    _togglePause();
     player.onDurationChanged.listen((duration) {
       setState(() {
         totalDuration = widget.duration1;
@@ -2064,16 +1749,18 @@ class _ButtonDetailPage11State extends State<ButtonDetailPage11> {
   @override
   Widget build(BuildContext context) {
     String remainingTime = (totalDuration - currentPosition).toString().split('.').first;
+    String totalTime = totalDuration.toString().split('.').first;
     if (remainingTime.startsWith('-')) {
       remainingTime = '00:00';
       player.stop();
+      Navigator.pop(context);
     }
 
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/a1.png'),
+            image: AssetImage('assets/b3.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -2112,20 +1799,20 @@ class _ButtonDetailPage11State extends State<ButtonDetailPage11> {
                     ),
                     SizedBox(height: 10), // 添加一个间距
                     Text(
-                      'Rainforest',
+                      'Stream',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 22,
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(height: 10), // 添加一个间距
+                    SizedBox(height: 30), // 添加一个间距
                     InkWell(
                       onTap: () {
                         // 处理按钮点击事件
                         print('Button click!');
                       },
                       child: Container(
-                        width: 250, // 调整宽度为更大的值
+                        width: 300, // 调整宽度为更大的值
                         height: 100, // 调整高度为更大的值
                         decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.5), // 设置半透明的背景颜色
@@ -2133,7 +1820,7 @@ class _ButtonDetailPage11State extends State<ButtonDetailPage11> {
                             color: Colors.white,
                             width: 2,
                           ),
-                          borderRadius: BorderRadius.circular(25), // 调整圆角半径为一半的宽度
+                          borderRadius: BorderRadius.circular(5), // 调整圆角半径为一半的宽度
                         ),
                         child: Center(
                           child: Text(
@@ -2141,7 +1828,7 @@ class _ButtonDetailPage11State extends State<ButtonDetailPage11> {
                                 ? 'session paused'
                                 : 'progressed',
                             style: TextStyle(
-                              fontSize: 30,
+                              fontSize: 25,
                               color: Colors.black,
                             ),
                           ),
@@ -2158,6 +1845,9 @@ class _ButtonDetailPage11State extends State<ButtonDetailPage11> {
               right: 0,
               child: InkWell(
                 onTap: () {
+                  setState(() {
+                    showRemainingTime = true;
+                  });
                   _togglePause();
                 },
                 child: Container(
@@ -2218,44 +1908,48 @@ class _ButtonDetailPage11State extends State<ButtonDetailPage11> {
               ),
             ),
             Positioned(
-              top: 600,
-              left: 60,
+              top: 585,
+              left: 0,
               right: 0,
-              child: Text(
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
                   'Time remaining · $remainingTime',
-                style: TextStyle(
-                fontSize: 24,
-                color: Colors.white,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ),
-           ),
             Positioned(
-              top: 650,
+              top: 635,
               left: 0,
               right: 0,
               child: Align(
                 alignment: Alignment.center,
                 child: InkWell(
                   onTap: () {
+                    player.stop();
                     // 处理按钮点击事件
                     Navigator.pop(context);
                   },
                   child: Container(
-                    width: 300,
+                    width: 250,
                     height: 60,
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.5),
+                      color: Colors.white,
                       border: Border.all(
                         color: Colors.white,
                         width: 2,
                       ),
-                      borderRadius: BorderRadius.circular(25),
+                      borderRadius: BorderRadius.circular(5),
                     ),
                     child: Center(
                       child: Text(
                         'End Session',
                         style: TextStyle(
-                          fontSize: 30,
+                          fontSize: 18,
                           color: Colors.black,
                         ),
                       ),
@@ -2272,25 +1966,59 @@ class _ButtonDetailPage11State extends State<ButtonDetailPage11> {
   }
 }
 
-
 class ButtonDetailPage12 extends StatefulWidget {
+  final Duration duration1;
+  ButtonDetailPage12({required this.duration1});
+
   @override
   _ButtonDetailPage12State createState() => _ButtonDetailPage12State();
 }
 
 class _ButtonDetailPage12State extends State<ButtonDetailPage12> {
+  AudioPlayer audioPlayer = AudioPlayer();
+  AudioCache audioCache = AudioCache();
   AudioPlayer player = AudioPlayer();
-  bool isPlaying = false;
+  DateTime currentTime = DateTime.now();
+  Timer? timer;
+  bool isPlaying = true;
+  bool isPaused = true;
   bool isLooping = false;
   Duration totalDuration = Duration.zero;
   Duration currentPosition = Duration.zero;
+  Duration yiDuration = Duration(seconds:1);
+  double get remainingProgress => (totalDuration - currentPosition).inMilliseconds / (totalDuration + yiDuration).inMilliseconds;
+
+  void _togglePause() {
+    setState(() {
+      isPaused = !isPaused;
+      isPlaying = !isPlaying;
+    });
+
+    if (isPlaying) {
+      player.pause();
+    } else {
+      player.setSource(AssetSource('beach_environment.mp3')).then((value) {
+        player.play(
+          AssetSource('beach_environment.mp3'),
+        );
+      });
+    }
+
+    if (isLooping) {
+      player.setReleaseMode(ReleaseMode.loop);
+    } else {
+      player.setReleaseMode(ReleaseMode.release);
+    }
+
+  }
 
   @override
   void initState() {
     super.initState();
+    _togglePause();
     player.onDurationChanged.listen((duration) {
       setState(() {
-        totalDuration = duration;
+        totalDuration = widget.duration1;
       });
     });
 
@@ -2299,46 +2027,520 @@ class _ButtonDetailPage12State extends State<ButtonDetailPage12> {
         currentPosition = position;
       });
     });
+    // 每分钟更新一次时间
+    timer = Timer.periodic(Duration(seconds: 60), (Timer t) {
+      setState(() {
+        currentTime = DateTime.now();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     String remainingTime = (totalDuration - currentPosition).toString().split('.').first;
+    if (remainingTime.startsWith('-')) {
+      remainingTime = '00:00';
+      player.stop();
+      Navigator.pop(context);
+    }
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Page 1'),
-      ),
       body: Container(
-        child: Column(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/b2.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Stack(
           children: [
-            TextButton(
-              onPressed: () {
-                if (isPlaying) {
-                  player.pause();
-                } else {
-                  player.setSource(AssetSource('campfire_music_L2.mp3')).then((value) {
-                    player.play(AssetSource('campfire_music_L2.mp3'));
+            Positioned(
+              top: 390,
+              left: 0,
+              right: 0,
+              child: Align(
+                alignment: Alignment.center,
+                child: Transform.scale(
+                  scale: 4.8, // 设置放大倍数，这里为2.0
+                  child: CircularProgressIndicator(
+                    value: remainingProgress,
+                    strokeWidth: 5,
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 50,
+              left: 0,
+              right: 0,
+              child: Align(
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    Text(
+                      DateFormat.Hm().format(currentTime), // Format to display only hours and minutes
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 10), // 添加一个间距
+                    Text(
+                      'Beach',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                    SizedBox(height: 10), // 添加一个间距
+                    InkWell(
+                      onTap: () {
+                        // 处理按钮点击事件
+                        print('Button click!');
+                      },
+                      child: Container(
+                        width: 300, // 调整宽度为更大的值
+                        height: 100, // 调整高度为更大的值
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.5), // 设置半透明的背景颜色
+                          border: Border.all(
+                            color: Colors.white,
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(5), // 调整圆角半径为一半的宽度
+                        ),
+                        child: Center(
+                          child: Text(
+                            isPaused
+                                ? 'session paused'
+                                : 'progressed',
+                            style: TextStyle(
+                              fontSize: 25,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Positioned(
+              top: 330,
+              left: 0,
+              right: 0,
+              child: InkWell(
+                onTap: () {
+                  _togglePause();
+                },
+                child: Container(
+                    width: 160,
+                    height: 160,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                    ),
+                    child: isPaused
+                        ? Image.asset('assets/ic_guided_meditation_record_play.png')
+                        : Image.asset('assets/zanting.png')
+                ),
+              ),
+            ),
+            Positioned(
+              top: 380,
+              left: 300,
+              right: 0,
+              child: InkWell(
+                onTap: () {
+                  setState(() {
+                    isLooping = !isLooping;
                   });
-                }
-                setState(() {
-                  isPlaying = !isPlaying;
-                });
-              },
-              child: Text(isPlaying ? 'Pause' : 'Play'),
+                },
+                child: CircleAvatar(
+                  radius: 30,
+                  backgroundColor: isLooping ? Colors.green : Colors.grey,
+                  child: Icon(
+                    Icons.loop,
+                    size: 25,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
             ),
-            Text('Total Duration: ${totalDuration.toString().split('.').first}'),
-            Text('Current Position: ${currentPosition.toString().split('.').first}'),
-            Text('Remaining Time: $remainingTime'),
-            CheckboxListTile(
-              title: Text('Loop'),
-              value: isLooping,
-              onChanged: (value) {
-                setState(() {
-                  isLooping = value!;
-                });
-              },
+            Positioned(
+              top: 380,
+              left: 0,
+              right: 300,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => YinliangPage(player: player),
+                    ),
+                  );
+                },
+                child: CircleAvatar(
+                  radius: 30,
+                  child: Icon(
+                    Icons.book,
+                    size: 25,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
             ),
+            Positioned(
+              top: 585,
+              left: 0,
+              right: 0,
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  'Time remaining · $remainingTime',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 635,
+              left: 0,
+              right: 0,
+              child: Align(
+                alignment: Alignment.center,
+                child: InkWell(
+                  onTap: () {
+                    player.stop();
+                    // 处理按钮点击事件
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    width: 250,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.5),
+                      border: Border.all(
+                        color: Colors.white,
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'End Session',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            // ...
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ButtonDetailPage13 extends StatefulWidget {
+  final Duration duration1;
+  ButtonDetailPage13({required this.duration1});
+
+  @override
+  _ButtonDetailPage13State createState() => _ButtonDetailPage13State();
+}
+
+class _ButtonDetailPage13State extends State<ButtonDetailPage13> {
+  AudioPlayer audioPlayer = AudioPlayer();
+  AudioCache audioCache = AudioCache();
+  AudioPlayer player = AudioPlayer();
+  DateTime currentTime = DateTime.now();
+  Timer? timer;
+  bool isPlaying = true;
+  bool isPaused = true;
+  bool isLooping = false;
+  Duration totalDuration = Duration.zero;
+  Duration currentPosition = Duration.zero;
+  Duration yiDuration = Duration(seconds:1);
+  double get remainingProgress => (totalDuration - currentPosition).inMilliseconds / (totalDuration + yiDuration).inMilliseconds;
+
+  void _togglePause() {
+    setState(() {
+      isPaused = !isPaused;
+      isPlaying = !isPlaying;
+    });
+
+    if (isPlaying) {
+      player.pause();
+    } else {
+      player.setSource(AssetSource('forest.mp3')).then((value) {
+        player.play(
+          AssetSource('forest.mp3'),
+        );
+      });
+    }
+
+    if (isLooping) {
+      player.setReleaseMode(ReleaseMode.loop);
+    } else {
+      player.setReleaseMode(ReleaseMode.release);
+    }
+
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _togglePause();
+    player.onDurationChanged.listen((duration) {
+      setState(() {
+        totalDuration = widget.duration1;
+      });
+    });
+
+    player.onPositionChanged.listen((position) {
+      setState(() {
+        currentPosition = position;
+      });
+    });
+    // 每分钟更新一次时间
+    timer = Timer.periodic(Duration(seconds: 60), (Timer t) {
+      setState(() {
+        currentTime = DateTime.now();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    String remainingTime = (totalDuration - currentPosition).toString().split('.').first;
+    if (remainingTime.startsWith('-')) {
+      remainingTime = '00:00';
+      player.stop();
+      Navigator.pop(context);
+    }
+
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/b1.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Stack(
+          children: [
+            Positioned(
+              top: 390,
+              left: 0,
+              right: 0,
+              child: Align(
+                alignment: Alignment.center,
+                child: Transform.scale(
+                  scale: 4.8, // 设置放大倍数，这里为2.0
+                  child: CircularProgressIndicator(
+                    value: remainingProgress,
+                    strokeWidth: 5,
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 50,
+              left: 0,
+              right: 0,
+              child: Align(
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    Text(
+                      DateFormat.Hm().format(currentTime), // Format to display only hours and minutes
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 10), // 添加一个间距
+                    Text(
+                      'Forest',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                    SizedBox(height: 10), // 添加一个间距
+                    InkWell(
+                      onTap: () {
+                        // 处理按钮点击事件
+                        print('Button click!');
+                      },
+                      child: Container(
+                        width: 300, // 调整宽度为更大的值
+                        height: 100, // 调整高度为更大的值
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.5), // 设置半透明的背景颜色
+                          border: Border.all(
+                            color: Colors.white,
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(5), // 调整圆角半径为一半的宽度
+                        ),
+                        child: Center(
+                          child: Text(
+                            isPaused
+                                ? 'session paused'
+                                : 'progressed',
+                            style: TextStyle(
+                              fontSize: 25,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Positioned(
+              top: 330,
+              left: 0,
+              right: 0,
+              child: InkWell(
+                onTap: () {
+                  _togglePause();
+                },
+                child: Container(
+                    width: 160,
+                    height: 160,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                    ),
+                    child: isPaused
+                        ? Image.asset('assets/ic_guided_meditation_record_play.png')
+                        : Image.asset('assets/zanting.png')
+                ),
+              ),
+            ),
+            Positioned(
+              top: 380,
+              left: 300,
+              right: 0,
+              child: InkWell(
+                onTap: () {
+                  setState(() {
+                    isLooping = !isLooping;
+                  });
+                },
+                child: CircleAvatar(
+                  radius: 30,
+                  backgroundColor: isLooping ? Colors.green : Colors.grey,
+                  child: Icon(
+                    Icons.loop,
+                    size: 25,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 380,
+              left: 0,
+              right: 300,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => YinliangPage(player: player),
+                    ),
+                  );
+                },
+                child: CircleAvatar(
+                  radius: 30,
+                  child: Icon(
+                    Icons.book,
+                    size: 25,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 585,
+              left: 0,
+              right: 0,
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                'Time remaining · $remainingTime',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 635,
+              left: 0,
+              right: 0,
+              child: Align(
+                alignment: Alignment.center,
+                child: InkWell(
+                  onTap: () {
+                    player.stop();
+                    // 处理按钮点击事件
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    width: 250,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.5),
+                      border: Border.all(
+                        color: Colors.white,
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'End Session',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            // ...
           ],
         ),
       ),
@@ -2400,7 +2602,7 @@ class ControlsTab extends StatelessWidget {
           leading: const Text('Volume'),
         ),
         Column(
-          children: [0.0, 0.5, 1.0, 2.0].map((it) {
+          children: [0.0, 0.5, 1.0].map((it) {
             final formattedVal = it.toStringAsFixed(1);
             return ElevatedButton(
               key: Key('control-volume-$formattedVal'),
