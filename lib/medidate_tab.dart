@@ -98,7 +98,7 @@ class _MedidateTabState extends State<MedidateTab> {
     ButtonDetailPage4(),
     ButtonDetailPage4(),
     ButtonDetailPage4(),
-    ButtonDetailPage4(),
+    ButtonDetailPage5(),
     ButtonDetailPage10(),
   ];
 
