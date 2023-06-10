@@ -37,45 +37,9 @@ class SettingTab extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-          decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey), // 设置边框样式
-          borderRadius: BorderRadius.zero, // 设置边框圆角
-          ),
-           child:ListTile(
-            trailing: Icon(Icons.arrow_forward),
-            title: Text('Name'),
-            onTap: () {
-              // 处理抽屉 1 的点击事件
-            },
-           ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), // 设置边框样式
-              borderRadius: BorderRadius.zero, // 设置边框圆角
-            ),
-           child: ListTile(
-            trailing: Icon(Icons.arrow_forward),
-            title: Text('Change Email or Password'),
-            onTap: () {
-              // 处理抽屉 2 的点击事件
-            },
-          ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), // 设置边框样式
-              borderRadius: BorderRadius.zero, // 设置边框圆角
-            ),
-           child:ListTile(
-            trailing: Icon(Icons.arrow_forward),
-            title: Text('Account Information'),
-            onTap: () {
-              // 处理抽屉 3 的点击事件
-            },
-          ),
-          ),
+            Lowercase('Name'),
+            Lowercase('Change Email or Password'),
+            Lowercase('Account Information'),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
@@ -86,33 +50,8 @@ class SettingTab extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), // 设置边框样式
-              borderRadius: BorderRadius.zero, // 设置边框圆角
-            ),
-            child:ListTile(
-              trailing: Icon(Icons.arrow_forward),
-              title: Text('Privacy Settings'),
-              onTap: () {
-                // 处理抽屉 1 的点击事件
-              },
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), // 设置边框样式
-              borderRadius: BorderRadius.zero, // 设置边框圆角
-            ),
-            child:ListTile(
-              trailing: Icon(Icons.arrow_forward),
-              title: Text('Data Policy'),
-              onTap: () {
-                // 处理抽屉 1 的点击事件
-              },
-            ),
-          ),
-
+          Lowercase('Privacy Settings'),
+          Lowercase('Data Policy'),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
@@ -123,19 +62,7 @@ class SettingTab extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), // 设置边框样式
-              borderRadius: BorderRadius.zero, // 设置边框圆角
-            ),
-            child:ListTile(
-              trailing: Icon(Icons.arrow_forward),
-              title: Text('Third Party Software'),
-              onTap: () {
-                // 处理抽屉 1 的点击事件
-              },
-            ),
-          ),
+            Lowercase('Third Party Software'),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
@@ -146,7 +73,7 @@ class SettingTab extends StatelessWidget {
               ),
             ),
           ),
-
+            Lowercase('Practice Reminders'),
           Container(
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey), // 设置边框样式
@@ -173,7 +100,6 @@ class SettingTab extends StatelessWidget {
               },
             ),
           ),
-
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
@@ -262,7 +188,6 @@ class SettingTab extends StatelessWidget {
               },
             ),
           ),
-
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
@@ -312,7 +237,6 @@ class SettingTab extends StatelessWidget {
               },
             ),
           ),
-
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
@@ -349,7 +273,6 @@ class SettingTab extends StatelessWidget {
               },
             ),
           ),
-
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
@@ -397,13 +320,28 @@ class SettingTab extends StatelessWidget {
               ),
             ),
           ),
-
         ],
       ),
       ),
     ),
     );
   }
+  }
+
+  Widget Lowercase(String title) {
+    return  Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey), // 设置边框样式
+        borderRadius: BorderRadius.zero, // 设置边框圆角
+      ),
+      child: ListTile(
+        trailing: Icon(Icons.arrow_forward),
+        title: Text(title),
+        onTap: () {
+          // 处理抽屉 2 的点击事件
+        },
+      ),
+    );
   }
   // ===========================================================================
   // Non-shared code below because on iOS, the settings tab is nested inside of

@@ -1474,7 +1474,12 @@ class ButtonDetailPage10 extends StatelessWidget {
                               icon: Icon(Icons.arrow_back_ios),
                               color: Colors.white,
                               onPressed: () {
-                                Navigator.pop(context);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => MedidateTab(),
+                                  ),
+                                );
                               },
                             ),
                           ),
@@ -1753,7 +1758,14 @@ class _ButtonDetailPage11State extends State<ButtonDetailPage11> {
     if (remainingTime.startsWith('-')) {
       remainingTime = '00:00';
       player.stop();
-      Navigator.pop(context);
+      WidgetsBinding.instance!.addPostFrameCallback((_) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => NewPage1(currentPosition: currentPosition),
+          ),
+        );
+      });
     }
 
     return Scaffold(
@@ -1932,7 +1944,14 @@ class _ButtonDetailPage11State extends State<ButtonDetailPage11> {
                   onTap: () {
                     player.stop();
                     // 处理按钮点击事件
-                    Navigator.pop(context);
+                    WidgetsBinding.instance!.addPostFrameCallback((_) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NewPage1(currentPosition: currentPosition),
+                        ),
+                      );
+                    });
                   },
                   child: Container(
                     width: 250,
@@ -2047,7 +2066,14 @@ class _ButtonDetailPage12State extends State<ButtonDetailPage12> {
     if (remainingTime.startsWith('-')) {
       remainingTime = '00:00';
       player.stop();
-      Navigator.pop(context);
+      WidgetsBinding.instance!.addPostFrameCallback((_) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => NewPage2(currentPosition: currentPosition),
+          ),
+        );
+      });
     }
 
     return Scaffold(
@@ -2223,7 +2249,14 @@ class _ButtonDetailPage12State extends State<ButtonDetailPage12> {
                   onTap: () {
                     player.stop();
                     // 处理按钮点击事件
-                    Navigator.pop(context);
+                    WidgetsBinding.instance!.addPostFrameCallback((_) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NewPage2(currentPosition: currentPosition),
+                        ),
+                      );
+                    });
                   },
                   child: Container(
                     width: 250,
@@ -2320,7 +2353,7 @@ class _ButtonDetailPage13State extends State<ButtonDetailPage13> {
     });
     // 每分钟更新一次时间
     timer = Timer.periodic(Duration(seconds: 60), (Timer t) {
-      setState(() {
+      setState(()  {
         currentTime = DateTime.now();
       });
     });
@@ -2338,7 +2371,14 @@ class _ButtonDetailPage13State extends State<ButtonDetailPage13> {
     if (remainingTime.startsWith('-')) {
       remainingTime = '00:00';
       player.stop();
-      Navigator.pop(context);
+      WidgetsBinding.instance!.addPostFrameCallback((_) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => NewPage3(currentPosition: currentPosition),
+          ),
+        );
+      });
     }
 
     return Scaffold(
@@ -2514,7 +2554,14 @@ class _ButtonDetailPage13State extends State<ButtonDetailPage13> {
                   onTap: () {
                     player.stop();
                     // 处理按钮点击事件
-                    Navigator.pop(context);
+                    WidgetsBinding.instance!.addPostFrameCallback((_) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NewPage3(currentPosition: currentPosition),
+                        ),
+                      );
+                    });
                   },
                   child: Container(
                     width: 250,
@@ -2589,6 +2636,7 @@ class _YinliangPageState extends State<YinliangPage> {
     );
   }
 }
+
 class ControlsTab extends StatelessWidget {
   final AudioPlayer player;
 
@@ -2613,6 +2661,1458 @@ class ControlsTab extends StatelessWidget {
         ),
       ],
 
+    );
+  }
+}
+
+class NewPage1 extends StatelessWidget {
+  final Duration currentPosition;
+
+  NewPage1({required this.currentPosition});
+
+  @override
+  Widget build(BuildContext context) {
+    DateTime currentTime = DateTime.now();
+    String formattedTime = DateFormat.Hm().format(currentTime);
+    String formattedPosition =
+    DateFormat.Hms().format(DateTime(0).add(currentPosition));
+    String timeDiff = DateFormat.Hm().format(currentTime.subtract(currentPosition));
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Stack(
+                alignment: Alignment.topLeft,
+                children: [
+                  Container(
+                    height: 220,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/c1.png'),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.vertical(
+                        bottom: Radius.elliptical(1000, 100),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 20,
+                    left: 20,
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.delete,
+                        color: Colors.white,
+                        size: 40,
+                      ),
+                      onPressed: () {
+                        WidgetsBinding.instance!.addPostFrameCallback((_) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ButtonDetailPage10(),
+                            ),
+                          );
+                        });
+                      },
+                    ),
+                  ),
+                  Positioned(
+                    top: 20,
+                    right: 20,
+                    child: InkWell(
+                      onTap: () {
+                        WidgetsBinding.instance!.addPostFrameCallback((_) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ButtonDetailPage10(),
+                            ),
+                          );
+                        });
+                      },
+                      child: Text(
+                        'Save',
+                        style: TextStyle(
+                          fontSize: 28,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 40,
+                    left: 0,
+                    right: 0,
+                    child: Center(
+                      child: Image.asset(
+                        'assets/ic_meditation_mode_timed_no_shadow.png',
+                        width: 50,
+                        height: 50,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 100,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      child: Center(
+                        child: Text(
+                          'Timed Session',
+                          style: TextStyle(
+                            fontSize: 36,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 150,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      child: Center(
+                        child: Text(
+                          DateFormat('yyyy-MM-dd').format(DateTime.now()),
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 30),
+              Row(
+                children: [
+                  SizedBox(width: 20),
+                  Container(
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: Center(
+                      child: Image.asset(
+                        'assets/ic_app_launcher.png',
+                        width: 50,
+                        height: 50,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Journey',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      Text(
+                        'Forest',
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      Text(
+                        'Unguided',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Divider(
+                color: Colors.grey,
+                thickness: 1.5,
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    SizedBox(width: 10),
+                    Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.pink.shade100,
+                      ),
+                      child: Center(
+                        child: Image.asset(
+                          'assets/ic_goals_teal.png',
+                          width: 20,
+                          height: 20,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          timeDiff,
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'Start Time',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 20),
+                    Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.pink.shade100,
+                      ),
+                      child: Center(
+                        child: Image.asset(
+                          'assets/ic_recoveries_large.png',
+                          width: 30,
+                          height: 30,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '$formattedTime',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'End Time',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 20),
+                    Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.pink.shade100,
+                      ),
+                      child: Center(
+                        child: Image.asset(
+                          'assets/ic_total_minutes.png',
+                          width: 30,
+                          height: 30,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '$formattedPosition',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'Session Duration',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+              Divider(
+                color: Colors.grey,
+                thickness: 1.5,
+              ),
+              SizedBox(height: 10),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  '  Stats',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              Align(
+                alignment: Alignment.center,
+                child: Image.asset(
+                  'assets/ic_muse_points.png',
+                  width: 60,
+                  height: 60,
+                ),
+              ),
+              SizedBox(height: 10),
+              Text(
+                '10',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                'muse points',
+                style: TextStyle(fontSize: 12),
+              ),
+              SizedBox(height: 15),
+              Divider(
+                color: Colors.grey,
+                thickness: 1.5,
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  '  Journal',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              Align(
+                alignment: Alignment.centerLeft,
+                child:Text(
+                  '  No journal entires',
+                  style: TextStyle(fontSize: 14),
+                ),
+              ),
+              SizedBox(height: 20),
+              Align(
+                alignment: Alignment.centerLeft,
+                child:InkWell(
+                  onTap: () {
+                    WidgetsBinding.instance!.addPostFrameCallback((_) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ButtonDetailPage10(),
+                        ),
+                      );
+                    });
+                  },
+                  child: Text(
+                    '  Delete session',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              ),
+              // Rest of the code...
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class NewPage2 extends StatelessWidget {
+  final Duration currentPosition;
+
+  NewPage2({required this.currentPosition});
+
+  @override
+  Widget build(BuildContext context) {
+    DateTime currentTime = DateTime.now();
+    String formattedTime = DateFormat.Hm().format(currentTime);
+    String formattedPosition =
+    DateFormat.Hms().format(DateTime(0).add(currentPosition));
+    String timeDiff = DateFormat.Hm().format(currentTime.subtract(currentPosition));
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Stack(
+                alignment: Alignment.topLeft,
+                children: [
+                  Container(
+                    height: 220,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/c1.png'),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.vertical(
+                        bottom: Radius.elliptical(1000, 100),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 20,
+                    left: 20,
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.delete,
+                        color: Colors.white,
+                        size: 40,
+                      ),
+                      onPressed: () {
+                        WidgetsBinding.instance!.addPostFrameCallback((_) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ButtonDetailPage10(),
+                            ),
+                          );
+                        });
+                      },
+                    ),
+                  ),
+                  Positioned(
+                    top: 20,
+                    right: 20,
+                    child: InkWell(
+                      onTap: () {
+                        WidgetsBinding.instance!.addPostFrameCallback((_) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ButtonDetailPage10(),
+                            ),
+                          );
+                        });
+                      },
+                      child: Text(
+                        'Save',
+                        style: TextStyle(
+                          fontSize: 28,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 40,
+                    left: 0,
+                    right: 0,
+                    child: Center(
+                      child: Image.asset(
+                        'assets/ic_meditation_mode_timed_no_shadow.png',
+                        width: 50,
+                        height: 50,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 100,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      child: Center(
+                        child: Text(
+                          'Timed Session',
+                          style: TextStyle(
+                            fontSize: 36,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 150,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      child: Center(
+                        child: Text(
+                          DateFormat('yyyy-MM-dd').format(DateTime.now()),
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 30),
+              Row(
+                children: [
+                  SizedBox(width: 20),
+                  Container(
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: Center(
+                      child: Image.asset(
+                        'assets/ic_app_launcher.png',
+                        width: 50,
+                        height: 50,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Journey',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      Text(
+                        'Forest',
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      Text(
+                        'Unguided',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Divider(
+                color: Colors.grey,
+                thickness: 1.5,
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    SizedBox(width: 10),
+                    Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.pink.shade100,
+                      ),
+                      child: Center(
+                        child: Image.asset(
+                          'assets/ic_goals_teal.png',
+                          width: 20,
+                          height: 20,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          timeDiff,
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'Start Time',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 20),
+                    Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.pink.shade100,
+                      ),
+                      child: Center(
+                        child: Image.asset(
+                          'assets/ic_recoveries_large.png',
+                          width: 30,
+                          height: 30,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '$formattedTime',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'End Time',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 20),
+                    Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.pink.shade100,
+                      ),
+                      child: Center(
+                        child: Image.asset(
+                          'assets/ic_total_minutes.png',
+                          width: 30,
+                          height: 30,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '$formattedPosition',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'Session Duration',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+              Divider(
+                color: Colors.grey,
+                thickness: 1.5,
+              ),
+              SizedBox(height: 10),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  '  Stats',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              Align(
+                alignment: Alignment.center,
+                child: Image.asset(
+                  'assets/ic_muse_points.png',
+                  width: 60,
+                  height: 60,
+                ),
+              ),
+              SizedBox(height: 10),
+              Text(
+                '10',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                'muse points',
+                style: TextStyle(fontSize: 12),
+              ),
+              SizedBox(height: 15),
+              Divider(
+                color: Colors.grey,
+                thickness: 1.5,
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  '  Journal',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              Align(
+                alignment: Alignment.centerLeft,
+                child:Text(
+                  '  No journal entires',
+                  style: TextStyle(fontSize: 14),
+                ),
+              ),
+              SizedBox(height: 20),
+              Align(
+                alignment: Alignment.centerLeft,
+                child:InkWell(
+                  onTap: () {
+                    WidgetsBinding.instance!.addPostFrameCallback((_) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ButtonDetailPage10(),
+                        ),
+                      );
+                    });
+                  },
+                  child: Text(
+                    '  Delete session',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              ),
+              // Rest of the code...
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class NewPage3 extends StatelessWidget {
+  final Duration currentPosition;
+
+  NewPage3({required this.currentPosition});
+
+  @override
+  Widget build(BuildContext context) {
+    DateTime currentTime = DateTime.now();
+    String formattedTime = DateFormat.Hm().format(currentTime);
+    String formattedPosition =
+    DateFormat.Hms().format(DateTime(0).add(currentPosition));
+    String timeDiff = DateFormat.Hm().format(currentTime.subtract(currentPosition));
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Stack(
+                alignment: Alignment.topLeft,
+                children: [
+                  Container(
+                    height: 220,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/c1.png'),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.vertical(
+                        bottom: Radius.elliptical(1000, 100),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 20,
+                    left: 20,
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.delete,
+                        color: Colors.white,
+                        size: 40,
+                      ),
+                      onPressed: () {
+                        WidgetsBinding.instance!.addPostFrameCallback((_) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ButtonDetailPage10(),
+                            ),
+                          );
+                        });
+                      },
+                    ),
+                  ),
+                  Positioned(
+                    top: 20,
+                    right: 20,
+                    child: InkWell(
+                      onTap: () {
+                        WidgetsBinding.instance!.addPostFrameCallback((_) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ButtonDetailPage10(),
+                            ),
+                          );
+                        });
+                      },
+                      child: Text(
+                        'Save',
+                        style: TextStyle(
+                          fontSize: 28,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 40,
+                    left: 0,
+                    right: 0,
+                    child: Center(
+                      child: Image.asset(
+                        'assets/ic_meditation_mode_timed_no_shadow.png',
+                        width: 50,
+                        height: 50,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 100,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      child: Center(
+                        child: Text(
+                          'Timed Session',
+                          style: TextStyle(
+                            fontSize: 36,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 150,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      child: Center(
+                        child: Text(
+                          DateFormat('yyyy-MM-dd').format(DateTime.now()),
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 30),
+              Row(
+                children: [
+                  SizedBox(width: 20),
+                  Container(
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: Center(
+                      child: Image.asset(
+                        'assets/ic_app_launcher.png',
+                        width: 50,
+                        height: 50,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Journey',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      Text(
+                        'Forest',
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      Text(
+                        'Unguided',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Divider(
+                color: Colors.grey,
+                thickness: 1.5,
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    SizedBox(width: 10),
+                    Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.pink.shade100,
+                      ),
+                      child: Center(
+                        child: Image.asset(
+                          'assets/ic_goals_teal.png',
+                          width: 20,
+                          height: 20,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          timeDiff,
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'Start Time',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 20),
+                    Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.pink.shade100,
+                      ),
+                      child: Center(
+                        child: Image.asset(
+                          'assets/ic_recoveries_large.png',
+                          width: 30,
+                          height: 30,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '$formattedTime',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'End Time',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 20),
+                    Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.pink.shade100,
+                      ),
+                      child: Center(
+                        child: Image.asset(
+                          'assets/ic_total_minutes.png',
+                          width: 30,
+                          height: 30,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '$formattedPosition',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'Session Duration',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+              Divider(
+                color: Colors.grey,
+                thickness: 1.5,
+              ),
+              SizedBox(height: 10),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  '  Stats',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              Align(
+                alignment: Alignment.center,
+                child: Image.asset(
+                  'assets/ic_muse_points.png',
+                  width: 60,
+                  height: 60,
+                ),
+              ),
+              SizedBox(height: 10),
+              Text(
+                '10',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                'muse points',
+                style: TextStyle(fontSize: 12),
+              ),
+              SizedBox(height: 15),
+              Divider(
+                color: Colors.grey,
+                thickness: 1.5,
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  '  Journal',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              Align(
+                alignment: Alignment.centerLeft,
+                child:Text(
+                  '  No journal entires',
+                  style: TextStyle(fontSize: 14),
+                ),
+              ),
+              SizedBox(height: 20),
+              Align(
+                alignment: Alignment.centerLeft,
+                child:InkWell(
+                  onTap: () {
+                    WidgetsBinding.instance!.addPostFrameCallback((_) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ButtonDetailPage10(),
+                        ),
+                      );
+                    });
+                  },
+                  child: Text(
+                    '  Delete session',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              ),
+              // Rest of the code...
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+class NewPage5 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Stack(
+                alignment: Alignment.topLeft,
+                children: [
+                  Container(
+                    height: 220,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/c1.png'),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.vertical(
+                        bottom: Radius.elliptical(1000, 100),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 20,
+                    left: 20,
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.delete,
+                        color: Colors.white,
+                        size: 40,
+                      ),
+                      onPressed: () {
+                        WidgetsBinding.instance!.addPostFrameCallback((_) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ButtonDetailPage10(),
+                            ),
+                          );
+                        });
+                      },
+                    ),
+                  ),
+                  Positioned(
+                    top: 20,
+                    right: 20,
+                    child: InkWell(
+                      onTap: () {
+                        WidgetsBinding.instance!.addPostFrameCallback((_) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ButtonDetailPage10(),
+                            ),
+                          );
+                        });
+                      },
+                      child: Text(
+                        'Save',
+                        style: TextStyle(
+                          fontSize: 28,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 40,
+                    left: 0,
+                    right: 0,
+                    child: Center(
+                      child: Image.asset(
+                        'assets/ic_meditation_mode_timed_no_shadow.png',
+                        width: 50,
+                        height: 50,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 100,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      child: Center(
+                        child: Text(
+                          'Timed Session',
+                          style: TextStyle(
+                            fontSize: 36,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 150,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      child: Center(
+                        child: Text(
+                          '1',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 30),
+              Row(
+                children: [
+                  SizedBox(width: 20),
+                  Container(
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: Center(
+                      child: Image.asset(
+                        'assets/ic_app_launcher.png',
+                        width: 50,
+                        height: 50,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Journey',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      Text(
+                        'Forest',
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      Text(
+                        'Unguided',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Divider(
+                color: Colors.grey,
+                thickness: 1.5,
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    SizedBox(width: 10),
+                    Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.pink.shade100,
+                      ),
+                      child: Center(
+                        child: Image.asset(
+                          'assets/ic_goals_teal.png',
+                          width: 20,
+                          height: 20,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'timeDiff',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'Start Time',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 20),
+                    Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.pink.shade100,
+                      ),
+                      child: Center(
+                        child: Image.asset(
+                          'assets/ic_recoveries_large.png',
+                          width: 30,
+                          height: 30,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '3',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'End Time',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 20),
+                    Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.pink.shade100,
+                      ),
+                      child: Center(
+                        child: Image.asset(
+                          'assets/ic_total_minutes.png',
+                          width: 30,
+                          height: 30,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '1',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'Session Duration',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+              Divider(
+                color: Colors.grey,
+                thickness: 1.5,
+              ),
+              SizedBox(height: 10),
+              Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    '  Stats',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              SizedBox(height: 10),
+              Align(
+                  alignment: Alignment.center,
+                  child: Image.asset(
+                    'assets/ic_muse_points.png',
+                    width: 60,
+                    height: 60,
+                  ),
+                ),
+              SizedBox(height: 10),
+              Text(
+                '10',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                'muse points',
+                style: TextStyle(fontSize: 12),
+              ),
+              SizedBox(height: 15),
+              Divider(
+                color: Colors.grey,
+                thickness: 1.5,
+              ),
+              Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    '  Journal',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              SizedBox(height: 10),
+              Align(
+                alignment: Alignment.centerLeft,
+                child:Text(
+                  '  No journal entires',
+                  style: TextStyle(fontSize: 14),
+                ),
+              ),
+              SizedBox(height: 20),
+              Align(
+                alignment: Alignment.centerLeft,
+                child:InkWell(
+                  onTap: () {
+                    WidgetsBinding.instance!.addPostFrameCallback((_) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ButtonDetailPage10(),
+                        ),
+                      );
+                    });
+                  },
+                  child: Text(
+                    '  Delete session',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              ),
+              // Rest of the code...
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
