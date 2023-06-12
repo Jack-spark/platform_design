@@ -37,265 +37,33 @@ class SettingTab extends StatelessWidget {
               ),
             ),
           ),
-            Lowercase('Name'),
-            Lowercase('Change Email or Password'),
-            Lowercase('Account Information'),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Text(
-              'PRIVACY',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-          ),
+          Lowercase('Name'),
+          Lowercase('Change Email or Password'),
+          Lowercase('Account Information'),
+          Uppercase('PRIVACY'),
           Lowercase('Privacy Settings'),
           Lowercase('Data Policy'),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Text(
-              'ABOUT',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-          ),
-            Lowercase('Third Party Software'),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Text(
-              'NOTIFICATION',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-          ),
-            Lowercase('Practice Reminders'),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), // 设置边框样式
-              borderRadius: BorderRadius.zero, // 设置边框圆角
-            ),
-            child:ListTile(
-              trailing: Icon(Icons.arrow_forward),
-              title: Text('Practice Reminders'),
-              onTap: () {
-                // 处理抽屉 1 的点击事件
-              },
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), // 设置边框样式
-              borderRadius: BorderRadius.zero, // 设置边框圆角
-            ),
-            child:ListTile(
-              trailing: Icon(Icons.arrow_forward),
-              title: Text('Email preferences'),
-              onTap: () {
-                // 处理抽屉 1 的点击事件
-              },
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Text(
-              'SYSTEM SETTINGS',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), // 设置边框样式
-              borderRadius: BorderRadius.zero, // 设置边框圆角
-            ),
-            child:ListTile(
-              trailing: Icon(Icons.arrow_forward),
-              title: Text('Check For Firmware Update'),
-              onTap: () {
-                // 处理抽屉 1 的点击事件
-              },
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), // 设置边框样式
-              borderRadius: BorderRadius.zero, // 设置边框圆角
-            ),
-            child:ListTile(
-              trailing: Icon(Icons.arrow_forward),
-              title: Text('Firmware Version'),
-              onTap: () {
-                // 处理抽屉 1 的点击事件
-              },
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), // 设置边框样式
-              borderRadius: BorderRadius.zero, // 设置边框圆角
-            ),
-            child:ListTile(
-              trailing: Icon(Icons.arrow_forward),
-              title: Text('Muse Serial Number'),
-              onTap: () {
-                // 处理抽屉 1 的点击事件
-              },
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), // 设置边框样式
-              borderRadius: BorderRadius.zero, // 设置边框圆角
-            ),
-            child:ListTile(
-              trailing: Icon(Icons.arrow_forward),
-              title: Text('App Version'),
-              onTap: () {
-                // 处理抽屉 1 的点击事件
-              },
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), // 设置边框样式
-              borderRadius: BorderRadius.zero, // 设置边框圆角
-            ),
-            child:ListTile(
-              trailing: Icon(Icons.arrow_forward),
-              title: Text('Region'),
-              onTap: () {
-                // 处理抽屉 1 的点击事件
-              },
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), // 设置边框样式
-              borderRadius: BorderRadius.zero, // 设置边框圆角
-            ),
-            child:ListTile(
-              trailing: Icon(Icons.arrow_forward),
-              title: Text('Sync Large Files on Wifi only'),
-              onTap: () {
-                // 处理抽屉 1 的点击事件
-              },
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Text(
-              'HELP',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), // 设置边框样式
-              borderRadius: BorderRadius.zero, // 设置边框圆角
-            ),
-            child:ListTile(
-              trailing: Icon(Icons.arrow_forward),
-              title: Text('Frequently Asked Questions'),
-              onTap: () {
-                // 处理抽屉 1 的点击事件
-              },
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), // 设置边框样式
-              borderRadius: BorderRadius.zero, // 设置边框圆角
-            ),
-            child:ListTile(
-              trailing: Icon(Icons.arrow_forward),
-              title: Text('Online Help(web)'),
-              onTap: () {
-                // 处理抽屉 1 的点击事件
-              },
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), // 设置边框样式
-              borderRadius: BorderRadius.zero, // 设置边框圆角
-            ),
-            child:ListTile(
-              trailing: Icon(Icons.arrow_forward),
-              title: Text('Contact Customer Care'),
-              onTap: () {
-                // 处理抽屉 1 的点击事件
-              },
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Text(
-              'SEND FEEDBACK',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), // 设置边框样式
-              borderRadius: BorderRadius.zero, // 设置边框圆角
-            ),
-            child:ListTile(
-              trailing: Icon(Icons.arrow_forward),
-              title: Text('Love Muse?Rate us!'),
-              onTap: () {
-                // 处理抽屉 1 的点击事件
-              },
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), // 设置边框样式
-              borderRadius: BorderRadius.zero, // 设置边框圆角
-            ),
-            child:ListTile(
-              trailing: Icon(Icons.arrow_forward),
-              title: Text('Send Feedback'),
-              onTap: () {
-                // 处理抽屉 1 的点击事件
-              },
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Text(
-              'DEVELOPER TOOLS',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), // 设置边框样式
-              borderRadius: BorderRadius.zero, // 设置边框圆角
-            ),
-            child:ListTile(
-              trailing: Icon(Icons.arrow_forward),
-              title: Text('OSC Output'),
-              onTap: () {
-                // 处理抽屉 1 的点击事件
-              },
-            ),
-          ),
+          Uppercase('ABOUT'),
+          Lowercase('Third Party Software'),
+          Uppercase('NOTIFICATION'),
+          Lowercase('Practice Reminders'),
+          Lowercase('Email preferences'),
+          Uppercase('SYSTEM SETTINGS'),
+          Lowercase('Check For Firmware Update'),
+          Lowercase('Firmware Version'),
+          Lowercase('Muse Serial Number'),
+          Lowercase('App Version'),
+          Lowercase('Region'),
+          Lowercase('Sync Large Files on WiFi only'),
+          Uppercase('HELP'),
+          Lowercase('Frequently Asked Questions'),
+          Lowercase('Online Help(web)'),
+          Lowercase('Contact Customer Care'),
+          Uppercase('SEND FEEDBACK'),
+          Lowercase('Love Muse?Rate us!'),
+          Lowercase('Send Feedback'),
+          Uppercase('DEVELOPER TOOLS'),
+          Lowercase('OSC Output'),
           Container(
             width: double.infinity,
             color: Colors.white,
@@ -343,10 +111,19 @@ class SettingTab extends StatelessWidget {
       ),
     );
   }
+  Widget Uppercase(String title) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Text(
+        title,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+        ),
+      ),
+    );
+  }
   // ===========================================================================
   // Non-shared code below because on iOS, the settings tab is nested inside of
   // the Setting tab as a button in the nav bar.
   // ===========================================================================
-
-
-

@@ -196,7 +196,6 @@ class _MeTabState extends State<MeTab> {
                               // height: 1,
                               color: Colors.white,
                               thickness: 2,
-
                             ),
                           ),
                       ),
@@ -209,7 +208,6 @@ class _MeTabState extends State<MeTab> {
                             // height: 1,
                             color: Colors.white,
                             thickness: 2,
-
                           ),
                         ),
                       ),
@@ -290,6 +288,7 @@ class _MeTabState extends State<MeTab> {
                       ],
                           )
                     ),
+                //茶色的椭圆分界线
                 Container(
                   height: 25,
                   width: double.infinity,
@@ -328,7 +327,6 @@ class _MeTabState extends State<MeTab> {
                               height: 30,
                             ),
                           ),
-
                           Padding(
                             padding: EdgeInsets.only(left: 12),
                           ),
@@ -363,7 +361,6 @@ class _MeTabState extends State<MeTab> {
                             height: 30,
                             ),
                           ),
-
                         ],
                       ),
                       ),
@@ -1292,21 +1289,18 @@ class _MeTabState extends State<MeTab> {
                           children:[
                             Text(
                             '0 min / 10 min',
-
                             style: TextStyle(
                               fontSize: 20.0,
                             ),
                           ),
                           Text(
                           '(ends Sunday at midnight)',
-
                           style: TextStyle(
                             fontSize: 15.0,
                           ),
                         ),
                         ],
                         ),
-
                       ),
                       Icon(
                           color: Colors.grey,
@@ -1380,34 +1374,11 @@ class _MeTabState extends State<MeTab> {
                   ],
                   ),
                 ),
-
-
           ],
                     ),
     ),
       ),
-
             );
-  // 下半部分的内容
-
-
-
-
-    // appBar: AppBar(
-      //   title: const Text(MeTab.title),
-      //   actions: [
-      //     IconButton(
-      //       icon: const Icon(Icons.refresh),
-      //       onPressed: () async =>
-      //       await _androidRefreshKey.currentState!.show(),
-      //     ),
-      //     IconButton(
-      //       icon: const Icon(Icons.shuffle),
-      //       onPressed: _togglePlatform,
-      //     ),
-      //   ],
-      // ),
-      // drawer: widget.androidDrawer,
   }
 
   Widget _buildIos(BuildContext context) {

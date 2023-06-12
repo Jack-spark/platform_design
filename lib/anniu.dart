@@ -1413,9 +1413,8 @@ class ButtonDetailPage10 extends StatelessWidget {
   ];
   List<Widget> ButtonDetailPageb = [
     Rainforest(),
-    Rainforest2(),
-    Rainforest3(),
-
+    Rainforest(),
+    Rainforest(),
   ];
   @override
   Widget build(BuildContext context) {
