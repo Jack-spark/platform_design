@@ -56,10 +56,10 @@ class _flowersState extends State<flowers> {
                 },
               ),
               SizedBox(height: 16.0),
-              ElevatedButton(
-                child: const Text('Expert'),
-                onPressed: () {},
-              ),
+              // ElevatedButton(
+              //   child: const Text('Expert'),
+              //   onPressed: () {},
+              // ),
             ],
           ),
         ),
@@ -90,9 +90,9 @@ class SpeedController extends SimpleAnimation {
 
 }
 
-void main() => runApp(
-  MaterialApp(
-    title: 'Lotus',
-    home: const flowers(),
-  ),
-);
+// void main() => runApp(
+//   MaterialApp(
+//     title: 'Lotus',
+//     home: const flowers(),
+//   ),
+// );

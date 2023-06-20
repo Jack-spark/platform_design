@@ -3,11 +3,11 @@
 // found in the LICENSE fil
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'anniu.dart';
 import 'programs_tab.dart';
 import 'ti.dart';
+import 'flowers.dart';
 
 
 
@@ -94,7 +94,7 @@ class _MedidateTabState extends State<MedidateTab> {
 
   List<Widget> ButtonDetailPagec = [
     SpeedyAnimation(),
-    ButtonDetailPage4(),
+    flowers(),
     ButtonDetailPage4(),
     ButtonDetailPage4(),
     ButtonDetailPage10(),
@@ -278,7 +278,7 @@ class _MedidateTabState extends State<MedidateTab> {
                           ),
                           SizedBox(height: 8),
                           Text(
-                            buttonLabels3[index],
+                            buttonText,
                             style: TextStyle(color: Colors.white, fontSize: 16),
                           ),
                         ],
