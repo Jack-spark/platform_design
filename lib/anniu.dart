@@ -1408,7 +1408,6 @@ class ButtonDetailPage10 extends StatelessWidget {
     'assets/b3.png',
     'assets/b2.png',
     'assets/b1.png',
-
     // 添加更多按钮的图标数据
   ];
   List<Widget> ButtonDetailPageb = [
@@ -3758,7 +3757,6 @@ class NewPage3 extends StatelessWidget {
     );
   }
 }
-
 
 class NewPage5 extends StatelessWidget {
   @override

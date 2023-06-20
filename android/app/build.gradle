@@ -32,7 +32,7 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 android {
     namespace "dev.flutter.platform_design"
     compileSdkVersion flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+    ndkVersion "25.1.8937393"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

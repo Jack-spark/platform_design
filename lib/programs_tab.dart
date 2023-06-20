@@ -137,6 +137,7 @@ class _ProgramsTabState extends State<ProgramsTab> {
                         ),//Sequential guidance and instruction to help you
                       ],
                     ),//在背景图像上叠加按钮和字
+
                   ),
                 ],
               ),
@@ -215,9 +216,12 @@ class _ProgramsTabState extends State<ProgramsTab> {
                 ),
                ),
                ),//Programs各个具体部件的实现
+
           ],
               ),
                   ),
+                  ),
+
           ),
         );
 

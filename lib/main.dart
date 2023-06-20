@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 
 import 'medidate_tab.dart';
 import 'setting_tab.dart';
-import 'settings_tab.dart';
 import 'me_tab.dart';
 import 'widgets.dart';
 
