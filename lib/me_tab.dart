@@ -305,7 +305,6 @@ class _MeTabState extends State<MeTab> {
                             height: 30,
                             ),
                           ),
-
                         ],
                       ),
                       ),
@@ -1234,21 +1233,18 @@ class _MeTabState extends State<MeTab> {
                           children:[
                             Text(
                             '0 min / 10 min',
-
                             style: TextStyle(
                               fontSize: 20.0,
                             ),
                           ),
                           Text(
                           '(ends Sunday at midnight)',
-
                           style: TextStyle(
                             fontSize: 15.0,
                           ),
                         ),
                         ],
                         ),
-
                       ),
                       Icon(
                           color: Colors.grey,
@@ -1322,13 +1318,10 @@ class _MeTabState extends State<MeTab> {
                   ],
                   ),
                 ),
-
-
           ],
                     ),
     ),
       ),
-
             );
   }
 

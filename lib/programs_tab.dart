@@ -14,27 +14,11 @@ class ProgramsTab extends StatefulWidget {
 
   @override
   State<ProgramsTab> createState() => _ProgramsTabState();
-}
+} //Medidate界面的see all，Programs具体部件的实现
 
 class _ProgramsTabState extends State<ProgramsTab> {
-  final _androidRefreshKey = GlobalKey<RefreshIndicatorState>();
-  final List<String> buttonLabels = ['Whats new                 4 sessions', 'June Staff Picks         6 sessions'];
   final List<String> buttonLabels2 = ['Muse 2 Stater Guide', 'Muse S Stater Guide', 'Foundations of Muse Mind Meditation',
     'Discover Heart,Breath&Body','14 Days of Sleep','Explore Guided Meditations','Muse Essentials'];
-  final List<String> buttonLabels3 = ['Mind', 'Body', 'Heart', 'Breath','Timed',];
-  List<String> buttonImagePaths = [
-    'assets/ic_meditation_mode_mind_no_shadow.png',
-    'assets/ic_meditation_mode_body_no_shadow.png',
-    'assets/ic_meditation_mode_heart_no_shadow.png',
-    'assets/ic_meditation_mode_breath_no_shadow.png',
-    'assets/ic_meditation_mode_timed_no_shadow.png',
-    // 添加更多按钮的图标数据
-  ];
-  List<String> buttonImagePaths2 = [
-    'assets/a7.png',
-    'assets/a5.png',
-    // 添加更多按钮的图标数据
-  ];
   List<String> buttonImagePaths3 = [
     'assets/a1.png',
     'assets/a4.png',
@@ -45,11 +29,6 @@ class _ProgramsTabState extends State<ProgramsTab> {
     'assets/a6.png',
     // 添加更多按钮的图标数据
   ];
-  List<Widget> ButtonDetailPagea = [
-    ButtonDetailPage1(),
-    ButtonDetailPage2(),
-  ];
-
   List<Widget> ButtonDetailPageb = [
     ButtonDetailPage3(),
     ButtonDetailPage4(),
@@ -62,20 +41,7 @@ class _ProgramsTabState extends State<ProgramsTab> {
 
   @override
   void initState() {
-    _setData();
     super.initState();
-  }
-
-  void _setData() {
-
-  }
-
-  Future<void> _refreshData() {
-    return Future.delayed(
-      // This is just an arbitrary delay that simulates some network activity.
-      const Duration(seconds: 2),
-          () => setState(() => _setData()),
-    );
   }
 
   @override
@@ -89,6 +55,7 @@ class _ProgramsTabState extends State<ProgramsTab> {
               Stack(
                 alignment: Alignment.topLeft,
                 children: [
+                  //设置背景图像
                   Container(
                     height: MediaQuery.of(context).size.height * 0.25,
                     width: double.infinity,
@@ -123,7 +90,7 @@ class _ProgramsTabState extends State<ProgramsTab> {
                               ),
                             ),
                           ),
-                        ),
+                        ),//加号键
                         Align(
                           alignment: Alignment(-0.9, -1),
                           child:
@@ -134,7 +101,7 @@ class _ProgramsTabState extends State<ProgramsTab> {
                                 Navigator.pop(context);
                               },
                             ),
-                          ),
+                          ),//返回键
                         Positioned(
                           top: MediaQuery.of(context).size.height * 0.1,
                           left: MediaQuery.of(context).size.width * 0.05,
@@ -149,7 +116,7 @@ class _ProgramsTabState extends State<ProgramsTab> {
                               ),
                           ),
                         ),
-                        ),
+                        ),//Program字体
                         Positioned(
                           top: MediaQuery.of(context).size.height * 0.16,
                           left: MediaQuery.of(context).size.width * 0.05,
@@ -167,26 +134,25 @@ class _ProgramsTabState extends State<ProgramsTab> {
                               ),
                             ),
                           ),
-                        ),
+                        ),//Sequential guidance and instruction to help you
                       ],
-                    ),
+                    ),//在背景图像上叠加按钮和字
+
                   ),
                 ],
               ),
                Padding(padding: EdgeInsets.all(10)),
                // Scrollbar(
                Container(
-                 height: MediaQuery.of(context).size.width*1.2  ,
+                height: MediaQuery.of(context).size.width*1.2  ,
                 margin: EdgeInsets.symmetric(vertical: 16),
-                child:
-                Scrollbar(
+                child: Scrollbar(
                   child: ListView.builder(
-                  // padding: const EdgeInsets.symmetric(vertical: 12),
-                  scrollDirection: Axis.vertical,
-                  itemCount: buttonLabels2.length,
-                  itemBuilder: (context, index) {
-                    final buttonText = buttonLabels2[index];
-                    final buttonImagePath = buttonImagePaths3[index];
+                    scrollDirection: Axis.vertical,
+                    itemCount: buttonLabels2.length,
+                    itemBuilder: (context, index) {
+                      final buttonText = buttonLabels2[index];
+                      final buttonImagePath = buttonImagePaths3[index];
                     return InkWell(
                       onTap: () {
                         // 导航到新的页面
@@ -243,23 +209,24 @@ class _ProgramsTabState extends State<ProgramsTab> {
                               ],
                             ),
                           ),
-
-
                         ),
                       ),
                     );
                   },
                 ),
                ),
-               ),
+               ),//Programs各个具体部件的实现
+
           ],
+              ),
                   ),
                   ),
+
           ),
         );
 
   }
-}
+}//Programs页面的构建
 
 class Rainforest extends StatefulWidget{
   const Rainforest({super.key});
@@ -295,7 +262,7 @@ class _Rainforest extends State<Rainforest> {
                           fontSize: 18
                       ),
                     ),
-                  ),
+                  ),//Journey
                   Align(
                     alignment: Alignment.topLeft,
                     child: IconButton(
@@ -305,7 +272,7 @@ class _Rainforest extends State<Rainforest> {
                         Navigator.pop(context);
                       },
                     ),
-                  ),
+                  ),//返回键
                 ],
               ),
               Align(
@@ -331,7 +298,7 @@ class _Rainforest extends State<Rainforest> {
                     ),
                   ),
                 ),
-              ),
+              ),//绿色按钮
               Padding(
                 padding: EdgeInsets.only(bottom: 15),
               ),
@@ -349,7 +316,7 @@ class _Rainforest extends State<Rainforest> {
                     textAlign: TextAlign.center,
                   ),
                 ),
-              ),
+              ),//How long would you like your session to last?
               Padding(
                 padding: EdgeInsets.only(bottom: 20),
               ),
@@ -362,12 +329,12 @@ class _Rainforest extends State<Rainforest> {
   }
 
 
-}
+}//Timed界面的Rainforest构建
 
 class ColorChangingCircles extends StatefulWidget {
   @override
   _ColorChangingCirclesState createState() => _ColorChangingCirclesState();
-}
+}//Rainforest里点击六个按钮控制时间
 
 class _ColorChangingCirclesState extends State<ColorChangingCircles> {
   List<bool> _selectedStates = List.filled(6, false);
@@ -379,19 +346,15 @@ class _ColorChangingCirclesState extends State<ColorChangingCircles> {
       if (_selectedStates[index] == true)
         _selectedStates[index] = false;
       else {
-        for (int i = 0; i < _selectedStates.length; i++) {
+        for (int i = 0; i < _selectedStates.length; i++)
           _selectedStates[i] = false;
-        }
         _selectedStates[index] = !_selectedStates[index];
         selectduration = Duration(hours: 0, minutes: (index + 1) * 5);
       }
-
-
     });
   }
 
   @override
-
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -427,7 +390,7 @@ class _ColorChangingCirclesState extends State<ColorChangingCircles> {
               ),
             ),
           ),
-        ),
+        ),//5、10、15min
         Padding(
           padding: EdgeInsets.only(bottom: 20),
         ),
@@ -467,7 +430,7 @@ class _ColorChangingCirclesState extends State<ColorChangingCircles> {
               ),
             ),
           ),
-        ),
+        ),//20、25、30min
         Padding(
           padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.1),
         ),
@@ -544,13 +507,11 @@ class _ColorChangingCirclesState extends State<ColorChangingCircles> {
                     ),
                   ),
                 ),
-              ),
+              ),//Next按钮
             ],
           ),
         ),
       ],
-
     );
   }
 }
-
