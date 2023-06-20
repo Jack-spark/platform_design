@@ -5,13 +5,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_lorem/flutter_lorem.dart';
 import 'anniu.dart';
 import 'programs_tab.dart';
+import 'ti.dart';
 
 
-import 'utils.dart';
-import 'widgets.dart';
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
@@ -82,7 +80,7 @@ class _MedidateTabState extends State<MedidateTab> {
   List<Widget> ButtonDetailPagea = [
   ButtonDetailPage1(),
   ButtonDetailPage2(),
-  ];
+  ];//feauture部件的界面
 
   List<Widget> ButtonDetailPageb = [
     ButtonDetailPage3(),
@@ -92,15 +90,15 @@ class _MedidateTabState extends State<MedidateTab> {
     ButtonDetailPage7(),
     ButtonDetailPage8(),
     ButtonDetailPage9(),
-  ];
+  ];//programs部件的界面
 
   List<Widget> ButtonDetailPagec = [
-    ButtonDetailPage4(),
+    SpeedyAnimation(),
     ButtonDetailPage4(),
     ButtonDetailPage4(),
     ButtonDetailPage4(),
     ButtonDetailPage10(),
-  ];
+  ];//meditation部件的界面
 
   @override
   Widget build(BuildContext context) {
@@ -124,10 +122,6 @@ class _MedidateTabState extends State<MedidateTab> {
                     borderRadius: BorderRadius.vertical(
                       bottom: Radius.elliptical(1000, 100),
                     ),
-                    //border: Border.all(
-                     // color: Colors.blue,
-                      //width: 2,
-                    //),
                   ),
                   child: Align(
                     alignment: Alignment.topCenter,
@@ -191,93 +185,16 @@ class _MedidateTabState extends State<MedidateTab> {
                   ),
                 ),
               ],
-            ),
-          Container(
+            ),//整个muse背景和部件的设定
+            Container(
             alignment: Alignment.centerLeft,
             margin: EdgeInsets.only(left: 16, top: 16),
             child: Text(
               'Featured',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-          ),
-
-
-            Container(
-              height: 120,
-              margin: EdgeInsets.symmetric(vertical: 16),
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: buttonLabels.length,
-                itemBuilder: (context, index) {
-                  final buttonText = buttonLabels[index];
-                  final buttonImagePath = buttonImagePaths2[index];
-
-                  return InkWell(
-                    onTap: () {
-                      // 导航到新的页面
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ButtonDetailPagea[index],
-                        ),
-                      );
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width / 2,
-                      margin: EdgeInsets.only(left: 8),
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: Image.asset(buttonImagePath,).image,
-                          fit: BoxFit.cover,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Align(
-                        alignment: Alignment.bottomLeft,
-                        child: Container(
-                          margin: EdgeInsets.only(left: 8, bottom: 8),
-                          child: Row(
-
-                            children: [
-                              Align(
-                                alignment: Alignment.centerLeft, // 仅对图标进行水平居中对齐
-                                child: Padding(
-                                  padding: EdgeInsets.only(top: 40),
-                                  child:Icon(
-                                    Icons.density_medium,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: 4),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.only(top: 40),
-                                  child: Wrap(
-                                    children: [
-                                      Text(
-                                        buttonLabels[index],
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
-
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-
+          ),//Featured字体设定
+            ButtonDetail(buttonLabels, buttonImagePaths2, ButtonDetailPagea),
             Container(
               margin: EdgeInsets.only(left: 16, top: 16),
               child: Row(
@@ -314,92 +231,16 @@ class _MedidateTabState extends State<MedidateTab> {
                   ),
                 ],
               ),
-            ),
-
+            ),//Programs字体设定
+            ButtonDetail(buttonLabels2, buttonImagePaths3, ButtonDetailPageb),
             Container(
-              height: 120,
-              margin: EdgeInsets.symmetric(vertical: 16),
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: buttonLabels2.length,
-                itemBuilder: (context, index) {
-                  final buttonText = buttonLabels2[index];
-                  final buttonImagePath = buttonImagePaths3[index];
-
-                  return InkWell(
-                    onTap: () {
-                      // 导航到新的页面
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ButtonDetailPageb[index],
-                        ),
-                      );
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width / 2,
-                      margin: EdgeInsets.only(left: 8),
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: Image.asset(buttonImagePath,).image,
-                          fit: BoxFit.cover,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Align(
-                        alignment: Alignment.bottomLeft,
-                        child: Container(
-                          margin: EdgeInsets.only(left: 8, bottom: 8),
-                          child: Row(
-
-                            children: [
-                              Align(
-                                alignment: Alignment.centerLeft, // 仅对图标进行水平居中对齐
-                                child: Padding(
-                                  padding: EdgeInsets.only(top: 40),
-                                  child:Icon(
-                                    Icons.density_medium,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: 4),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.only(top: 40),
-                                  child: Wrap(
-                                    children: [
-                                      Text(
-                                        buttonLabels2[index],
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
-
-                      ),
-                    ),
-                  );
-                },
+              alignment: Alignment.centerLeft,
+              margin: EdgeInsets.only(left: 16, top: 16),
+              child: Text(
+                'Biofeedback Meditations',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-            ),
-
-          Container(
-            alignment: Alignment.centerLeft,
-            margin: EdgeInsets.only(left: 16, top: 16),
-            child: Text(
-              'Biofeedback Meditations',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-          ),
+            ),//Biofeedback Meditations字体设定
             Container(
               height: 120,
               margin: EdgeInsets.symmetric(vertical: 16),
@@ -581,6 +422,80 @@ class _MedidateTabState extends State<MedidateTab> {
         ],
       ),
       ),
+      ),
+    );
+  }
+
+  Widget ButtonDetail(List<String> buttonLabels, List<String> buttonImagePaths, List<Widget> ButtonDetailPage) {
+    return Container(
+      height: 120,
+      margin: EdgeInsets.symmetric(vertical: 16),
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: buttonLabels.length,
+        itemBuilder: (context, index) {
+          final buttonText = buttonLabels[index];
+          final buttonImagePath = buttonImagePaths[index];
+          return InkWell(
+            onTap: () {
+              // 导航到新的页面
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ButtonDetailPage[index],
+                ),
+              );
+            },
+            child: Container(
+              width: MediaQuery.of(context).size.width / 2,
+              margin: EdgeInsets.only(left: 8),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: Image.asset(buttonImagePath,).image,
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Align(
+                alignment: Alignment.bottomLeft,
+                child: Container(
+                  margin: EdgeInsets.only(left: 8, bottom: 8),
+                  child: Row(
+                    children: [
+                      Align(
+                        alignment: Alignment.centerLeft, // 仅对图标进行水平居中对齐
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 40),
+                          child:Icon(
+                            Icons.density_medium,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 4),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 40),
+                          child: Wrap(
+                            children: [
+                              Text(
+                                buttonText,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }

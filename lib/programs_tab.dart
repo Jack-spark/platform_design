@@ -170,16 +170,6 @@ class _ProgramsTabState extends State<ProgramsTab> {
                         ),
                       ],
                     ),
-
-                  //   decoration: BoxDecoration(
-                  //     image: DecorationImage(
-                  //       image: Image.asset('assets/background_presleep_star_sky.png').image,
-                  //       fit: BoxFit.cover,
-                  //     ),
-                  //     borderRadius: BorderRadius.vertical(
-                  //       bottom: Radius.elliptical(1000, 100),
-                  //     ),
-                  // ),
                   ),
                 ],
               ),
@@ -197,7 +187,6 @@ class _ProgramsTabState extends State<ProgramsTab> {
                   itemBuilder: (context, index) {
                     final buttonText = buttonLabels2[index];
                     final buttonImagePath = buttonImagePaths3[index];
-
                     return InkWell(
                       onTap: () {
                         // 导航到新的页面
@@ -263,28 +252,9 @@ class _ProgramsTabState extends State<ProgramsTab> {
                 ),
                ),
                ),
-
-
-
-
-               // RefreshIndicator(
-               //    // key: _androidRefreshKey,
-               //    onRefresh: _refreshData,
-               //    child: ListView(
-               //        children: items.map((item) => ListTile(
-               //          title: Text(item),
-               //        )).toList(),
-               //    ),
-               // ),
           ],
                   ),
-
                   ),
-
-
-
-
-
           ),
         );
 

@@ -5,8 +5,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'settings_tab.dart';
-import 'widgets.dart';
 
 class SettingTab extends StatelessWidget {
   const SettingTab();

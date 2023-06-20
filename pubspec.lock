@@ -191,6 +191,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  graphs:
+    dependency: transitive
+    description:
+      name: graphs
+      sha256: aedc5a15e78fc65a6e23bcd927f24c64dd995062bcd1ca6eda65a3cff92a4d19
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.3.1"
   http:
     dependency: transitive
     description:
@@ -227,10 +235,10 @@ packages:
     dependency: transitive
     description:
       name: lints
-      sha256: "6b0206b0bf4f04961fc5438198ccb3a885685cd67d4d4a32cc20ad7f8adbe015"
+      sha256: "0a217c6c989d21039f1498c3ed9f3ed71b354e69873f13a8dfc3c9fe76f1b452"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.0"
+    version: "2.1.1"
   matcher:
     dependency: transitive
     description:
@@ -335,14 +343,30 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.2.4"
+  rive:
+    dependency: "direct main"
+    description:
+      name: rive
+      sha256: "55e1f8bf249444545a7c832830d2bbb9adae759193fb879294bc6018b9f0eedd"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.11.3"
+  rive_common:
+    dependency: transitive
+    description:
+      name: rive_common
+      sha256: "7e17937b790bb2f631767b3d505da8c298309c0a6ab08cd317fa6fe081ed5b63"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.0.10"
   shared_preferences:
     dependency: transitive
     description:
       name: shared_preferences
-      sha256: "16d3fb6b3692ad244a695c0183fca18cf81fd4b821664394a781de42386bf022"
+      sha256: "396f85b8afc6865182610c0a2fc470853d56499f75f7499e2a73a9f0539d23d0"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.1"
+    version: "2.1.2"
   shared_preferences_android:
     dependency: transitive
     description:
