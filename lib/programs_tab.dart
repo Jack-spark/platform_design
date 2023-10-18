@@ -222,8 +222,7 @@ class _ProgramsTabState extends State<ProgramsTab> {
                   ),
                   ),
 
-          ),
-        );
+          );
 
   }
 }//Programs页面的构建

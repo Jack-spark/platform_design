@@ -71,7 +71,7 @@ class _PlatformAdaptingHomePageState extends State<PlatformAdaptingHomePage> {
   Widget _buildAndroidHomePage(BuildContext context) {
     return CupertinoTabScaffold(
       tabBar: CupertinoTabBar(
-        items:  [
+        items: [
           BottomNavigationBarItem(
             label: MeTab.title,
             icon: MeTab.iosIcon,
@@ -90,17 +90,17 @@ class _PlatformAdaptingHomePageState extends State<PlatformAdaptingHomePage> {
         assert(index <= 2 && index >= 0, 'Unexpected tab index: $index');
         return switch (index) {
           0 => CupertinoTabView(
-            defaultTitle: MeTab.title,
-            builder: (context) => MeTab(key: MeTabKey),
-          ),
+              defaultTitle: MeTab.title,
+              builder: (context) => MeTab(key: MeTabKey),
+            ),
           1 => CupertinoTabView(
-            defaultTitle: MedidateTab.title,
-            builder: (context) => const MedidateTab(),
-          ),
+              defaultTitle: MedidateTab.title,
+              builder: (context) => const MedidateTab(),
+            ),
           2 => CupertinoTabView(
-            defaultTitle: SettingTab.title,
-            builder: (context) => const SettingTab(),
-          ),
+              defaultTitle: SettingTab.title,
+              builder: (context) => const SettingTab(),
+            ),
           _ => const SizedBox.shrink(),
         };
       },
@@ -118,7 +118,7 @@ class _PlatformAdaptingHomePageState extends State<PlatformAdaptingHomePage> {
   Widget _buildIosHomePage(BuildContext context) {
     return CupertinoTabScaffold(
       tabBar: CupertinoTabBar(
-        items:  [
+        items: [
           BottomNavigationBarItem(
             label: MeTab.title,
             icon: MeTab.iosIcon,
@@ -162,4 +162,3 @@ class _PlatformAdaptingHomePageState extends State<PlatformAdaptingHomePage> {
     );
   }
 }
-

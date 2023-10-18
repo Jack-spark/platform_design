@@ -7,13 +7,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 
+
 import 'utils.dart';
 
 
 class MeTab extends StatefulWidget {
   static const title = 'Me';
   static const androidIcon = Icon(Icons.music_note);
-  static const iosIcon = Icon(CupertinoIcons.setting_circled);
+  static const iosIcon = Icon(CupertinoIcons.circle);
 
   const MeTab({super.key, this.androidDrawer});
 

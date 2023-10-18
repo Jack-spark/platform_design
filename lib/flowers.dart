@@ -11,14 +11,21 @@ class flowers extends StatefulWidget {
 class _flowersState extends State<flowers> {
   double speedMultiplier = 1.0;
   late SpeedController speedController;
+  String animation = 'DyingClosing';
 
   @override
   void initState() {
     super.initState();
     speedController = SpeedController(
-      'CloseOpenClose',
+      animation,
       speedMultiplier: speedMultiplier,
     );
+  }
+
+  @override
+  void dispose() {
+    speedController.dispose();
+    super.dispose();
   }
 
   @override
@@ -38,7 +45,7 @@ class _flowersState extends State<flowers> {
                   child: RiveAnimation.asset(
                     'assets/flowers.riv',
                     fit: BoxFit.contain,
-                    animations: const ['CloseOpenClose'],
+                    animations: [animation],
                     controllers:  [speedController],
                   ),
                 ),
@@ -51,6 +58,11 @@ class _flowersState extends State<flowers> {
                   setState(() {
                     speedMultiplier = value;
                     speedController.speedMultiplier = speedMultiplier;
+                    if (0.5 < value && value < 1.5) {
+                      animation = 'DyingClosing';
+                    } else if (value >= 1.5 && value <=2.5) {
+                      animation = 'BorningOpening';
+                    }
                     // animationTime = speedController.getAnimationTime();
                   });
                 },
@@ -90,9 +102,9 @@ class SpeedController extends SimpleAnimation {
 
 }
 
-// void main() => runApp(
-//   MaterialApp(
-//     title: 'Lotus',
-//     home: const flowers(),
-//   ),
-// );
+void main() => runApp(
+  MaterialApp(
+    title: 'Lotus',
+    home: const flowers(),
+  ),
+);
